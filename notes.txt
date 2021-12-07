@@ -1,0 +1,8 @@
+Read the readme completely
+
+Test suite - test all the tests when it is done
+
+which type of team member would you liek to add:
+    engineer
+    intern
+    i dont want to add anymore
