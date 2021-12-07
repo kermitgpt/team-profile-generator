@@ -25,14 +25,6 @@ describe("Employee", () => {
       expect(employee.getEmail()).toEqual(email);
     });
   });
-  describe("email", () => {
-    it("email matches", () => {
-      const email = "mattgrogan.dev@gmail.com";
-      const employee = new Employee(null, null, email);
-
-      expect(employee.getEmail()).toEqual(email);
-    });
-  });
   describe("role", () => {
     it("role matches", () => {
       const role = "Employee";

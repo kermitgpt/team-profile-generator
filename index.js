@@ -54,12 +54,12 @@ const buildEngineer = () => {
       },
       {
         type: "input",
-        message: "Enter your ID number...",
+        message: "Enter team member's ID number...",
         name: "idNum",
       },
       {
         type: "input",
-        message: "Enter your email address...",
+        message: "Enter team member's email address...",
         name: "email",
       },
       {
@@ -91,17 +91,17 @@ const buildIntern = () => {
       },
       {
         type: "input",
-        message: "Enter your ID number...",
+        message: "Enter team member's ID number...",
         name: "idNum",
       },
       {
         type: "input",
-        message: "Enter your email address...",
+        message: "Enter team member's email address...",
         name: "email",
       },
       {
         type: "input",
-        message: "Please enter school you attend...",
+        message: "Please enter school team member attends...",
         name: "school",
       },
     ])
@@ -172,10 +172,10 @@ const createHTML = () => {
 </html>`;
 };
 
-const renderManager = () => {
+/* const renderManager = () => {
   employees.map((employee) => {
     return `Name: ${this.name}`;
   });
 };
 
-function renderManager(employee) {}
+function renderManager(employee) {} */
