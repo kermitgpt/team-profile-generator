@@ -139,11 +139,14 @@ const addOrExit = () => {
       if (response2.managerChoice === "Finish building team") {
         console.log(employees);
         //TO-DO: Build writefile function
+        fs.writeFile("./dist/index.html", createHTML(employees), (err) => {
+          console.log(err);
+        });
       }
     });
 };
 
-const createHTML = () => {
+const createHTML = (employees) => {
   const html = `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -162,6 +165,11 @@ const createHTML = () => {
     <header class="bg-danger p-5">
       <p class="text-center text-white m-5 p-5 fs-1">My Team</p>
     </header>
+    <div class="row d-flex justify-content-around">
+    ${renderManager(employees[0])}
+    ${renderEmployee(employees)}
+
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -170,6 +178,7 @@ const createHTML = () => {
     <script src="./index.js"></script>
   </body>
 </html>`;
+  return html;
 };
 
 /* const renderManager = () => {
@@ -179,3 +188,52 @@ const createHTML = () => {
 };
 
 function renderManager(employee) {} */
+
+function renderManager(manager) {
+  let managerHTML = `
+  <div class="card col-3 m-3">
+  <h2 class="bg-info text-white">${manager.getName()}</h2>
+  <h2 class="bg-info text-white">${manager.getRole()}</h2>
+  <h2>ID: ${manager.getId()}</h2>
+  <h2>Email: ${manager.getEmail()}</h2>
+  <h2>Office Number: ${manager.getOfficeNumber()}</h2>
+  </div>
+  `;
+  return managerHTML;
+}
+
+function renderEmployee(employees) {
+  let htmlArray = [];
+  for (let i = 1; i < employees.length; i++) {
+    console.log(employees[i].getRole());
+    if (employees[i].getRole() === "Engineer") {
+      let engineerHTML = `
+  <div class="card col-3 m-3">
+  <h2 class="bg-info text-white">${employees[i].getName()}</h2>
+  <h2 class="bg-info text-white">${employees[i].getRole()}</h2>
+  <h2>ID: ${employees[i].getId()}</h2>
+  <h2>Email: ${employees[i].getEmail()}</h2>
+  <h2>Github: ${employees[i].getGithub()}</h2>
+  </div>
+  `;
+      htmlArray.push(engineerHTML);
+    }
+    if (employees[i].getRole() === "Intern") {
+      let internHTML = `
+  <div class="card col-3 m-3">
+  <h2 class="bg-info text-white">${employees[i].getName()}</h2>
+  <h2 class="bg-info text-white">${employees[i].getRole()}</h2>
+  <h2>ID: ${employees[i].getId()}</h2>
+  <h2>Email: ${employees[i].getEmail()}</h2>
+  <h2>School: ${employees[i].getSchool()}</h2>
+  </div>
+  `;
+      htmlArray.push(internHTML);
+    }
+  }
+  return htmlArray.join("");
+}
+
+/* employees.map((employee) => {
+    return `Name: ${this.name}\nID: ${this.idNum}\nEmail: ${this.email}\nOffice number: ${this.officeNum}`;
+  }); */
